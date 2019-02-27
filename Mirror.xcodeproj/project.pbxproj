@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30F706522227B9000E38976 /* Mirror.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30F706422227B9000E38976 /* Mirror.storyboard */; };
+		B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30F706622227BBE00E38976 /* MirrorViewController.swift */; };
+		B33883332226B0B00085795D /* DragCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883322226B0B00085795D /* DragCoordinator.swift */; };
+		B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883342226C2AC0085795D /* MirrorCoordinator.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
-		B3913DAC2222630C00A281B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ViewController.swift */; };
+		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
 		B3913DB12222630D00A281B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3913DB02222630D00A281B7 /* Assets.xcassets */; };
 		B3913DB42222630D00A281B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DB22222630D00A281B7 /* LaunchScreen.storyboard */; };
-		B3913DBF2222630D00A281B7 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DBE2222630D00A281B7 /* SampleTests.swift */; };
+		B3913DBF2222630D00A281B7 /* MirrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DBE2222630D00A281B7 /* MirrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,15 +30,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B3913DA62222630C00A281B7 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B30F706422227B9000E38976 /* Mirror.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mirror.storyboard; sourceTree = "<group>"; };
+		B30F706622227BBE00E38976 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
+		B33883322226B0B00085795D /* DragCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragCoordinator.swift; sourceTree = "<group>"; };
+		B33883342226C2AC0085795D /* MirrorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorCoordinator.swift; sourceTree = "<group>"; };
+		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3913DAB2222630C00A281B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
 		B3913DAE2222630C00A281B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3913DB02222630D00A281B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3913DB32222630D00A281B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3913DB52222630D00A281B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3913DBA2222630D00A281B7 /* SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3913DBE2222630D00A281B7 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
+		B3913DBA2222630D00A281B7 /* MirrorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MirrorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3913DBE2222630D00A281B7 /* MirrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorTests.swift; sourceTree = "<group>"; };
 		B3913DC02222630D00A281B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,8 +67,8 @@
 		B3913D9D2222630B00A281B7 = {
 			isa = PBXGroup;
 			children = (
-				B3913DA82222630C00A281B7 /* Sample */,
-				B3913DBD2222630D00A281B7 /* SampleTests */,
+				B3913DA82222630C00A281B7 /* Mirror */,
+				B3913DBD2222630D00A281B7 /* MirrorTests */,
 				B3913DA72222630C00A281B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,40 +76,44 @@
 		B3913DA72222630C00A281B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3913DA62222630C00A281B7 /* Sample.app */,
-				B3913DBA2222630D00A281B7 /* SampleTests.xctest */,
+				B3913DA62222630C00A281B7 /* Mirror.app */,
+				B3913DBA2222630D00A281B7 /* MirrorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B3913DA82222630C00A281B7 /* Sample */ = {
+		B3913DA82222630C00A281B7 /* Mirror */ = {
 			isa = PBXGroup;
 			children = (
+				B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */,
+				B30F706622227BBE00E38976 /* MirrorViewController.swift */,
+				B33883342226C2AC0085795D /* MirrorCoordinator.swift */,
+				B33883322226B0B00085795D /* DragCoordinator.swift */,
 				B3913DA92222630C00A281B7 /* AppDelegate.swift */,
-				B3913DAB2222630C00A281B7 /* ViewController.swift */,
 				B3913DAD2222630C00A281B7 /* Main.storyboard */,
 				B3913DB02222630D00A281B7 /* Assets.xcassets */,
 				B3913DB22222630D00A281B7 /* LaunchScreen.storyboard */,
 				B3913DB52222630D00A281B7 /* Info.plist */,
+				B30F706422227B9000E38976 /* Mirror.storyboard */,
 			);
-			path = Sample;
+			path = Mirror;
 			sourceTree = "<group>";
 		};
-		B3913DBD2222630D00A281B7 /* SampleTests */ = {
+		B3913DBD2222630D00A281B7 /* MirrorTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3913DBE2222630D00A281B7 /* SampleTests.swift */,
+				B3913DBE2222630D00A281B7 /* MirrorTests.swift */,
 				B3913DC02222630D00A281B7 /* Info.plist */,
 			);
-			path = SampleTests;
+			path = MirrorTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B3913DA52222630C00A281B7 /* Sample */ = {
+		B3913DA52222630C00A281B7 /* Mirror */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3913DC32222630D00A281B7 /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildConfigurationList = B3913DC32222630D00A281B7 /* Build configuration list for PBXNativeTarget "Mirror" */;
 			buildPhases = (
 				B3913DA22222630C00A281B7 /* Sources */,
 				B3913DA32222630C00A281B7 /* Frameworks */,
@@ -111,14 +123,14 @@
 			);
 			dependencies = (
 			);
-			name = Sample;
+			name = Mirror;
 			productName = Sample;
-			productReference = B3913DA62222630C00A281B7 /* Sample.app */;
+			productReference = B3913DA62222630C00A281B7 /* Mirror.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3913DB92222630D00A281B7 /* SampleTests */ = {
+		B3913DB92222630D00A281B7 /* MirrorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3913DC62222630D00A281B7 /* Build configuration list for PBXNativeTarget "SampleTests" */;
+			buildConfigurationList = B3913DC62222630D00A281B7 /* Build configuration list for PBXNativeTarget "MirrorTests" */;
 			buildPhases = (
 				B3913DB62222630D00A281B7 /* Sources */,
 				B3913DB72222630D00A281B7 /* Frameworks */,
@@ -129,9 +141,9 @@
 			dependencies = (
 				B3913DBC2222630D00A281B7 /* PBXTargetDependency */,
 			);
-			name = SampleTests;
+			name = MirrorTests;
 			productName = SampleTests;
-			productReference = B3913DBA2222630D00A281B7 /* SampleTests.xctest */;
+			productReference = B3913DBA2222630D00A281B7 /* MirrorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -146,6 +158,11 @@
 				TargetAttributes = {
 					B3913DA52222630C00A281B7 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B3913DB92222630D00A281B7 = {
 						CreatedOnToolsVersion = 10.1;
@@ -153,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B3913DA12222630B00A281B7 /* Build configuration list for PBXProject "Sample" */;
+			buildConfigurationList = B3913DA12222630B00A281B7 /* Build configuration list for PBXProject "Mirror" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,8 +183,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3913DA52222630C00A281B7 /* Sample */,
-				B3913DB92222630D00A281B7 /* SampleTests */,
+				B3913DA52222630C00A281B7 /* Mirror */,
+				B3913DB92222630D00A281B7 /* MirrorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +197,7 @@
 				B3913DB42222630D00A281B7 /* LaunchScreen.storyboard in Resources */,
 				B3913DB12222630D00A281B7 /* Assets.xcassets in Resources */,
 				B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */,
+				B30F706522227B9000E38976 /* Mirror.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3913DAC2222630C00A281B7 /* ViewController.swift in Sources */,
+				B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */,
 				B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */,
+				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
+				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
+				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3913DBF2222630D00A281B7 /* SampleTests.swift in Sources */,
+				B3913DBF2222630D00A281B7 /* MirrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +236,7 @@
 /* Begin PBXTargetDependency section */
 		B3913DBC2222630D00A281B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3913DA52222630C00A281B7 /* Sample */;
+			target = B3913DA52222630C00A281B7 /* Mirror */;
 			targetProxy = B3913DBB2222630D00A281B7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -362,12 +383,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KPBMY72PJU;
-				INFOPLIST_FILE = Sample/Info.plist;
+				INFOPLIST_FILE = Mirror/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.Sample;
+				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.Mirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -380,12 +401,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KPBMY72PJU;
-				INFOPLIST_FILE = Sample/Info.plist;
+				INFOPLIST_FILE = Mirror/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.Sample;
+				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.Mirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -399,17 +420,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KPBMY72PJU;
-				INFOPLIST_FILE = SampleTests/Info.plist;
+				INFOPLIST_FILE = MirrorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.SampleTests;
+				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.MirrorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mirror.app/Mirror";
 			};
 			name = Debug;
 		};
@@ -420,24 +441,24 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KPBMY72PJU;
-				INFOPLIST_FILE = SampleTests/Info.plist;
+				INFOPLIST_FILE = MirrorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.SampleTests;
+				PRODUCT_BUNDLE_IDENTIFIER = andrekandre.com.MirrorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mirror.app/Mirror";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3913DA12222630B00A281B7 /* Build configuration list for PBXProject "Sample" */ = {
+		B3913DA12222630B00A281B7 /* Build configuration list for PBXProject "Mirror" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3913DC12222630D00A281B7 /* Debug */,
@@ -446,7 +467,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3913DC32222630D00A281B7 /* Build configuration list for PBXNativeTarget "Sample" */ = {
+		B3913DC32222630D00A281B7 /* Build configuration list for PBXNativeTarget "Mirror" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3913DC42222630D00A281B7 /* Debug */,
@@ -455,7 +476,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3913DC62222630D00A281B7 /* Build configuration list for PBXNativeTarget "SampleTests" */ = {
+		B3913DC62222630D00A281B7 /* Build configuration list for PBXNativeTarget "MirrorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3913DC72222630D00A281B7 /* Debug */,

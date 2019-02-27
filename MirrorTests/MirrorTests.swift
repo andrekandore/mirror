@@ -1,15 +1,15 @@
 //
-//  SampleTests.swift
-//  SampleTests
+//  MirrorTests.swift
+//  MirrorTests
 //
 //  Created by アンドレ on 2/24/31 H.
 //  Copyright © 31 Heisei Andrekandre. All rights reserved.
 //
 
 import XCTest
-@testable import Sample
+@testable import Mirror
 
-class SampleTests: XCTestCase {
+class MirrorTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
