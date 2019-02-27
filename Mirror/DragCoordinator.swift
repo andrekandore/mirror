@@ -10,22 +10,29 @@ import UIKit
 
 class DragCoordinator: NSObject {
     
-    @IBOutlet var square: UIView?
+    @IBOutlet private var gestureRecognizers: [UIGestureRecognizer] = []
+    @IBOutlet private var draggableViews: [UIView] = []
     
-    @IBAction func panSqare(_ sender: UIPanGestureRecognizer) {
+    func addNewDraggableView(_ view: UIView) {
+        let newPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panView(_:)))
+        self.gestureRecognizers.append(newPanGestureRecognizer)
+        view.addGestureRecognizer(newPanGestureRecognizer)
+    }
+    
+    @IBAction private func panView(_ sender: UIPanGestureRecognizer) {
         
-        guard let square = square else {
+        guard let view = sender.view else {
             return
         }
         
-        let translation = sender.translation(in: square)
-        sender.setTranslation(.zero, in: square)
+        let translation = sender.translation(in: view)
+        sender.setTranslation(.zero, in: view)
         
-        var center = square.center
+        var center = view.center
         center.x += translation.x
         center.y += translation.y
         
-        square.center = center
+        view.center = center
     }
 }
 

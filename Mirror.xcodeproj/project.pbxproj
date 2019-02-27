@@ -11,6 +11,7 @@
 		B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30F706622227BBE00E38976 /* MirrorViewController.swift */; };
 		B33883332226B0B00085795D /* DragCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883322226B0B00085795D /* DragCoordinator.swift */; };
 		B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883342226C2AC0085795D /* MirrorCoordinator.swift */; };
+		B3388337222739D90085795D /* ViewCoordiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388336222739D90085795D /* ViewCoordiator.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
 		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		B30F706622227BBE00E38976 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		B33883322226B0B00085795D /* DragCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragCoordinator.swift; sourceTree = "<group>"; };
 		B33883342226C2AC0085795D /* MirrorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorCoordinator.swift; sourceTree = "<group>"; };
+		B3388336222739D90085795D /* ViewCoordiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordiator.swift; sourceTree = "<group>"; };
 		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				B30F706622227BBE00E38976 /* MirrorViewController.swift */,
 				B33883342226C2AC0085795D /* MirrorCoordinator.swift */,
 				B33883322226B0B00085795D /* DragCoordinator.swift */,
+				B3388336222739D90085795D /* ViewCoordiator.swift */,
 				B3913DA92222630C00A281B7 /* AppDelegate.swift */,
 				B3913DAD2222630C00A281B7 /* Main.storyboard */,
 				B3913DB02222630D00A281B7 /* Assets.xcassets */,
@@ -220,6 +223,7 @@
 				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
+				B3388337222739D90085795D /* ViewCoordiator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

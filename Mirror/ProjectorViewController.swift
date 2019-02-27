@@ -10,11 +10,39 @@ import UIKit
 import CoreVideo
 
 class ProjectorViewController: UIViewController {
-
-    @IBOutlet var mirrorView: UIView?
     
-    var displayLink: CADisplayLink?
+    @IBOutlet private weak var mirroredViewHeight: NSLayoutConstraint?
+    @IBOutlet private weak var mirroredViewWidth: NSLayoutConstraint?
+    @IBOutlet private var mirroredView: UIView?
+    
     var mirrorCoordinator: MirrorCoordinator?
+    private var displayLink: CADisplayLink?
+    
+    func addChildViewToMirror(_ view: UIView) {
+        self.mirroredView?.addSubview(view)
+    }
+    
+    var mirrorSizeRatio: CGSize = .zero {
+        didSet {
+            
+            guard   mirrorSizeRatio != .zero,
+//                    let width = mirroredViewWidth?.constant,
+                    let height = mirroredViewHeight,
+                    let view = mirroredView else {
+                return
+            }
+            
+            //TODO: make both height and width fit in device window + align to new ratio
+            let currentSize = view.bounds
+//            let currentRatio = currentSize.size.height / currentSize.size.width
+            let newRatio = mirrorSizeRatio.height / mirrorSizeRatio.width
+            let newHeight =  newRatio * currentSize.width 
+            height.constant = newHeight
+            
+            self.mirroredView?.setNeedsUpdateConstraints()
+            self.mirroredView?.setNeedsLayout()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +52,8 @@ class ProjectorViewController: UIViewController {
     }
 
     @objc func mirrorSelf() {
-        mirrorCoordinator?.currentImage = self.mirrorView?.mirrorImage
+        guard mirrorSizeRatio != .zero else { return }
+        mirrorCoordinator?.currentImage = self.mirroredView?.mirrorImage
     }
 
 }
