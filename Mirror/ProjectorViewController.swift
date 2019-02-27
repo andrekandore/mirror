@@ -13,6 +13,7 @@ class ProjectorViewController: UIViewController {
     
     @IBOutlet private weak var mirroredViewHeight: NSLayoutConstraint?
     @IBOutlet private weak var mirroredViewWidth: NSLayoutConstraint?
+    @IBOutlet private var freezeDryer: ViewFreezeDryer?
     @IBOutlet private var mirroredView: UIView?
     
     var mirrorCoordinator: MirrorCoordinator?
@@ -49,8 +50,29 @@ class ProjectorViewController: UIViewController {
         
         self.displayLink = CADisplayLink.init(target: self, selector: #selector(mirrorSelf))
         self.displayLink?.add(to: RunLoop.current, forMode: .default)
+        
+        let dataPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent("Views.json")
+        let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: dataPath))
+        
+        let dehydratedViews = self.freezeDryer?.unfreezeDryViews(from: data ?? Data())
+        for view in dehydratedViews ?? [] {
+            self.addChildViewToMirror(view)
+        }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        let dataPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent("Views.json")
+        
+        let freezDryedViews = self.freezeDryer?.freezeDryViewToJSON()
+        do {
+            try freezDryedViews?.write(to: URL.init(fileURLWithPath: dataPath), options: .atomic)
+        } catch let error {
+            debugPrint(error)
+        }
+    }
+    
     @objc func mirrorSelf() {
         guard mirrorSizeRatio != .zero else { return }
         mirrorCoordinator?.currentImage = self.mirroredView?.mirrorImage

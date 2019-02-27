@@ -56,6 +56,11 @@
                         <outlet property="projectorViewController" destination="BYZ-38-t0r" id="kEe-hS-g2r"/>
                     </connections>
                 </customObject>
+                <customObject id="TzF-5K-shT" customClass="ViewFreezeDryer" customModule="Mirror" customModuleProvider="target">
+                    <connections>
+                        <outlet property="freezeDryView" destination="IQs-M2-e1y" id="d0T-8G-6bY"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="139.453125" y="132.8125"/>
         </scene>
