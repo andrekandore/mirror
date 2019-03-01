@@ -9,7 +9,50 @@
 import UIKit
 
 class ViewFreezeDryer: NSObject {
+    
     @IBOutlet var freezeDryView: UIView?
+    
+    override init() {
+        super.init()
+     
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(passivateToStorage), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(passivateToStorage), name: UIApplication.willTerminateNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(activateFromStorage), name: UIApplication.didFinishLaunchingNotification, object: nil)
+    }
+}
+
+extension ViewFreezeDryer {
+    @objc func activateFromStorage() {
+        
+        let dataPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent("Views.json")
+        let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: dataPath))
+        
+        let dehydratedViews = self.rehydrateViews(from: data ?? Data())
+        for view in dehydratedViews {
+            self.freezeDryView?.addSubview(view)
+        }
+    }
+    
+    @objc func passivateToStorage() {
+        
+        let dataPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent("Views.json")
+        
+        let freezDryedViews = self.freezeDryViewToJSON()
+        do {
+            try freezDryedViews?.write(to: URL.init(fileURLWithPath: dataPath), options: .atomic)
+        } catch let error {
+            debugPrint(error)
+        }
+    }
+
+}
+
+extension ViewFreezeDryer {
     func freezeDryViewToJSON(with coder: JSONEncoder = JSONEncoder()) -> Data? {
         
         guard let freezeDryView = freezeDryView else {
@@ -27,7 +70,8 @@ class ViewFreezeDryer: NSObject {
         
         return data
     }
-    func unfreezeDryViews(from jsonData: Data, using decoder: JSONDecoder = JSONDecoder()) -> [UIView] {
+    
+    func rehydrateViews(from jsonData: Data, using decoder: JSONDecoder = JSONDecoder()) -> [UIView] {
         
         var views: [UIView] = []
         do {
