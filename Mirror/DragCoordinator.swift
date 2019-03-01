@@ -8,15 +8,19 @@
 
 import UIKit
 
+extension NSObject {
+    var className: String {
+        return String(describing: type(of: self))
+    }
+}
+
 class DragCoordinator: NSObject {
     
     @IBOutlet private var gestureRecognizers: [UIGestureRecognizer] = []
     @IBOutlet private var draggableViews: [UIView] = []
     
-    func addNewDraggableView(_ view: UIView) {
-        let newPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panView(_:)))
-        self.gestureRecognizers.append(newPanGestureRecognizer)
-        view.addGestureRecognizer(newPanGestureRecognizer)
+    @IBOutlet private var freezeDryer: ViewFreezeDryer? {
+        didSet { self.activateViewsFromFreezeDryer() }
     }
     
     @IBAction private func panView(_ sender: UIPanGestureRecognizer) {
@@ -33,6 +37,21 @@ class DragCoordinator: NSObject {
         center.y += translation.y
         
         view.center = center
+    }
+}
+
+extension DragCoordinator {
+    func addNewDraggableView(_ view: UIView) {
+        let newPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panView(_:)))
+        self.gestureRecognizers.append(newPanGestureRecognizer)
+        view.addGestureRecognizer(newPanGestureRecognizer)
+    }
+    func activateViewsFromFreezeDryer() {
+        self.freezeDryer?.addActivationObserver(for: self.className) { activatedViews in
+            for view in activatedViews {
+                self.addNewDraggableView(view)
+            }
+        }
     }
 }
 

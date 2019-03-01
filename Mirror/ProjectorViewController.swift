@@ -13,7 +13,6 @@ class ProjectorViewController: UIViewController {
     
     @IBOutlet private weak var mirroredViewHeight: NSLayoutConstraint?
     @IBOutlet private weak var mirroredViewWidth: NSLayoutConstraint?
-    @IBOutlet private var freezeDryer: ViewFreezeDryer?
     @IBOutlet private var mirroredView: UIView?
     
     var mirrorCoordinator: MirrorCoordinator?
@@ -51,7 +50,8 @@ class ProjectorViewController: UIViewController {
         self.displayLink = CADisplayLink.init(target: self, selector: #selector(mirrorSelf))
         self.displayLink?.add(to: RunLoop.current, forMode: .default)
     }
-        
+    
+    
     @objc func mirrorSelf() {
         guard mirrorSizeRatio != .zero else { return }
         mirrorCoordinator?.currentImage = self.mirroredView?.mirrorImage

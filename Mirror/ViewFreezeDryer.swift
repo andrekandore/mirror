@@ -11,6 +11,17 @@ import UIKit
 class ViewFreezeDryer: NSObject {
     
     @IBOutlet var freezeDryView: UIView?
+
+    private var didActivateObservers: [String: ObserverCallback] = [:]
+    typealias ObserverCallback = ([UIView]) -> Void
+    
+    func addActivationObserver(for identifier: String, _ observer: @escaping ObserverCallback) {
+        self.didActivateObservers[identifier] = observer
+    }
+    
+    func removeActivationObserverFor(identifier: String) {
+        self.didActivateObservers[identifier] = nil
+    }
     
     override init() {
         super.init()
@@ -35,6 +46,10 @@ extension ViewFreezeDryer {
         let dehydratedViews = self.rehydrateViews(from: data ?? Data())
         for view in dehydratedViews {
             self.freezeDryView?.addSubview(view)
+        }
+        
+        for (offset: _, element: (key: _, value: observer)) in self.didActivateObservers.enumerated() {
+            observer(dehydratedViews)
         }
     }
     
