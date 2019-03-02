@@ -61,10 +61,10 @@ class ProjectorViewController: UIViewController {
 
 extension UIView {
     var mirrorImage: UIImage? {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
-        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        let image = renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
         return image
     }
 }
