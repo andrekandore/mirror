@@ -13,6 +13,9 @@
 		B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883342226C2AC0085795D /* MirrorCoordinator.swift */; };
 		B3388337222739D90085795D /* ViewCoordiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388336222739D90085795D /* ViewCoordiator.swift */; };
 		B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833822273E250085795D /* ViewFreezeDryer.swift */; };
+		B338833D222A99600085795D /* DelegatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833C222A99600085795D /* DelegatingViewController.swift */; };
+		B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */; };
+		B3388341222AB2E50085795D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388340222AB2E50085795D /* Extensions.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
 		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 		B33883342226C2AC0085795D /* MirrorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorCoordinator.swift; sourceTree = "<group>"; };
 		B3388336222739D90085795D /* ViewCoordiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordiator.swift; sourceTree = "<group>"; };
 		B338833822273E250085795D /* ViewFreezeDryer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFreezeDryer.swift; sourceTree = "<group>"; };
+		B338833C222A99600085795D /* DelegatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingViewController.swift; sourceTree = "<group>"; };
+		B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClassPickerViewController.swift; sourceTree = "<group>"; };
+		B3388340222AB2E50085795D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B338833A222A87BE0085795D /* Other Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3913DB22222630D00A281B7 /* LaunchScreen.storyboard */,
+				B30F706422227B9000E38976 /* Mirror.storyboard */,
+			);
+			path = "Other Views";
+			sourceTree = "<group>";
+		};
+		B338833B222A99450085795D /* Other Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B338833C222A99600085795D /* DelegatingViewController.swift */,
+				B3388340222AB2E50085795D /* Extensions.swift */,
+			);
+			path = "Other Objects";
+			sourceTree = "<group>";
+		};
 		B3913D9D2222630B00A281B7 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +113,7 @@
 		B3913DA82222630C00A281B7 /* Mirror */ = {
 			isa = PBXGroup;
 			children = (
+				B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */,
 				B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */,
 				B30F706622227BBE00E38976 /* MirrorViewController.swift */,
 				B338833822273E250085795D /* ViewFreezeDryer.swift */,
@@ -98,9 +123,9 @@
 				B3913DA92222630C00A281B7 /* AppDelegate.swift */,
 				B3913DAD2222630C00A281B7 /* Main.storyboard */,
 				B3913DB02222630D00A281B7 /* Assets.xcassets */,
-				B3913DB22222630D00A281B7 /* LaunchScreen.storyboard */,
+				B338833B222A99450085795D /* Other Objects */,
+				B338833A222A87BE0085795D /* Other Views */,
 				B3913DB52222630D00A281B7 /* Info.plist */,
-				B30F706422227B9000E38976 /* Mirror.storyboard */,
 			);
 			path = Mirror;
 			sourceTree = "<group>";
@@ -222,9 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */,
+				B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */,
 				B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */,
 				B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */,
 				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
+				B3388341222AB2E50085795D /* Extensions.swift in Sources */,
+				B338833D222A99600085795D /* DelegatingViewController.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
 				B3388337222739D90085795D /* ViewCoordiator.swift in Sources */,

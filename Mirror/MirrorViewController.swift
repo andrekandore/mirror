@@ -16,10 +16,3 @@ class MirrorViewController: UIViewController {
         }
     }
 }
-
-extension UIView {
-    func testWithRandomColor() {
-        let color = UIColor.init(hue: CGFloat(arc4random() % 256)/256.0, saturation: CGFloat(arc4random() % 256)/256.0, brightness: CGFloat(arc4random() % 256)/256.0, alpha: CGFloat(arc4random() % 256)/256.0)
-        self.layer.backgroundColor = color.cgColor
-    }
-}

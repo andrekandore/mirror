@@ -9,7 +9,7 @@
 import UIKit
 import CoreVideo
 
-class ProjectorViewController: UIViewController {
+class ProjectorViewController: DelegatingViewController {
     
     @IBOutlet private weak var mirroredViewHeight: NSLayoutConstraint?
     @IBOutlet private weak var mirroredViewWidth: NSLayoutConstraint?
@@ -56,7 +56,7 @@ class ProjectorViewController: UIViewController {
         guard mirrorSizeRatio != .zero else { return }
         mirrorCoordinator?.currentImage = self.mirroredView?.mirrorImage
     }
-
+    
 }
 
 extension UIView {
@@ -68,3 +68,4 @@ extension UIView {
         return image
     }
 }
+

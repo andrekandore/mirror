@@ -7,16 +7,46 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewCoordiator: NSObject {
+class ViewCoordiator: NSObject, ViewControllerDelegating {
     
     @IBOutlet var projectorViewController: ProjectorViewController?
     @IBOutlet var dragCoordinator: DragCoordinator?
     
-    @IBAction func createView(sender: Any?) {
-        let newUIView = UIView(frame: CGRect(x: 200, y: 200, width: 128, height: 128))
-        newUIView.testWithRandomColor()
-        projectorViewController?.addChildViewToMirror(newUIView)
-        dragCoordinator?.addNewDraggableView(newUIView)
+    @IBAction func createTestView(sender: Any?) {
+        let testUIView = UIView(frame: CGRect(x: 200, y: 200, width: 128, height: 128))
+        testUIView.testWithRandomColor()
+        self.addNew(testUIView)
+    }
+
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier == ViewClassPickerViewController.className else {
+            return
+        }
+        
+        let destination = segue.destination
+        guard let viewClassesViewController = (destination as? ViewClassPickerViewController)
+                ?? (destination as? UINavigationController)?.viewControllers.first as? ViewClassPickerViewController else {
+            return
+        }
+        
+        viewClassesViewController.didPickViewClassCallback = { viewClass in
+            
+            debugPrint(viewClass)
+            
+            let initializedClass = viewClass.init()
+            guard let viewClass = initializedClass as? UIView else {
+                return
+            }
+            
+            self.addNew(viewClass)
+        }
+    }
+    
+    func addNew(_ view: UIView) {
+        projectorViewController?.addChildViewToMirror(view)
+        dragCoordinator?.addNewDraggableView(view)
     }
 }

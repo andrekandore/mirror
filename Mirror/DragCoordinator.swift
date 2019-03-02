@@ -14,6 +14,12 @@ extension NSObject {
     }
 }
 
+extension NSObjectProtocol {
+    static var className: String {
+        return String(describing: self)
+    }
+}
+
 class DragCoordinator: NSObject {
     
     @IBOutlet private var gestureRecognizers: [UIGestureRecognizer] = []

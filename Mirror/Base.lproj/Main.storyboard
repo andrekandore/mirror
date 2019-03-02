@@ -26,26 +26,49 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAf-uC-cO7">
-                                <rect key="frame" x="479.5" y="379" width="65" height="30"/>
-                                <state key="normal" title="Add View"/>
+                                <rect key="frame" x="463" y="512" width="98" height="30"/>
+                                <state key="normal" title="Add Test View"/>
                                 <connections>
-                                    <action selector="createViewWithSender:" destination="RZc-ra-2OM" eventType="touchUpInside" id="WZQ-VA-stz"/>
+                                    <action selector="createTestViewWithSender:" destination="RZc-ra-2OM" eventType="touchUpInside" id="x3F-EH-Tgw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-ah-Z6q">
+                                <rect key="frame" x="866" y="512" width="30" height="33"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="＋">
+                                            <attributes>
+                                                <font key="NSFont" size="18" name=".HiraKakuInterface-W7"/>
+                                                <font key="NSOriginalFont" size="18" name=".HiraKakuInterface-W7"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="V9L-WH-odR" kind="popoverPresentation" identifier="ViewClassPickerViewController" popoverAnchorView="j9o-ah-Z6q" id="Yhc-w1-u44">
+                                        <segue key="commit" inheritsFrom="parent" id="boq-HO-3wk"/>
+                                        <segue key="preview" inheritsFrom="commit" id="sus-14-XhG"/>
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="aAf-uC-cO7" firstAttribute="top" secondItem="IQs-M2-e1y" secondAttribute="bottom" constant="12" id="2q8-0p-Q9h"/>
                             <constraint firstItem="aAf-uC-cO7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EVB-4z-dja"/>
-                            <constraint firstItem="aAf-uC-cO7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dWt-ci-zWZ"/>
+                            <constraint firstItem="j9o-ah-Z6q" firstAttribute="top" secondItem="IQs-M2-e1y" secondAttribute="bottom" constant="12" id="m2Q-08-ZSr"/>
                             <constraint firstItem="IQs-M2-e1y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="n6v-vn-vzh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="IQs-M2-e1y" secondAttribute="top" id="se1-iB-gNQ"/>
                             <constraint firstItem="IQs-M2-e1y" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="yuU-aq-ed2"/>
+                            <constraint firstItem="j9o-ah-Z6q" firstAttribute="trailing" secondItem="IQs-M2-e1y" secondAttribute="trailing" id="zKW-32-9Fj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mirroredView" destination="IQs-M2-e1y" id="nky-ee-Scv"/>
                         <outlet property="mirroredViewHeight" destination="xYw-pi-nSF" id="iVK-1N-wPJ"/>
+                        <outletCollection property="delegates" destination="RZc-ra-2OM" collectionClass="NSMutableArray" id="whv-db-0kg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,5 +91,65 @@
             </objects>
             <point key="canvasLocation" x="139.453125" y="132.8125"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="HA5-r4-p6y">
+            <objects>
+                <tableViewController id="DDP-au-8lJ" customClass="ViewClassPickerViewController" customModule="Mirror" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sHP-SG-X1q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewClassPickerViewController" textLabel="9rV-HJ-gPT" style="IBUITableViewCellStyleDefault" id="zOb-yT-iCo">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zOb-yT-iCo" id="UtW-4l-5gv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9rV-HJ-gPT">
+                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DDP-au-8lJ" id="g1z-Zf-6of"/>
+                            <outlet property="delegate" destination="DDP-au-8lJ" id="N07-Ap-QtF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="6sz-NX-twF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfA-9T-NBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jjw-DC-c0Z">
+            <objects>
+                <navigationController id="V9L-WH-odR" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="810" height="768"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rGa-yU-Pzy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DDP-au-8lJ" kind="relationship" relationship="rootViewController" id="FMk-kP-uBO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iBo-sI-bNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="133"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Yhc-w1-u44"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.7348131903946602" blue="0.88671875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
