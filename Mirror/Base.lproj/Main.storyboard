@@ -36,7 +36,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aAf-uC-cO7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EVB-4z-dja"/>
-                            <constraint firstItem="IQs-M2-e1y" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="ToJ-pi-EIl"/>
                             <constraint firstItem="aAf-uC-cO7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dWt-ci-zWZ"/>
                             <constraint firstItem="IQs-M2-e1y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="n6v-vn-vzh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="IQs-M2-e1y" secondAttribute="top" id="se1-iB-gNQ"/>
@@ -45,7 +44,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="mirrorView" destination="IQs-M2-e1y" id="2b3-3g-hC2"/>
+                        <outlet property="mirroredView" destination="IQs-M2-e1y" id="nky-ee-Scv"/>
+                        <outlet property="mirroredViewHeight" destination="xYw-pi-nSF" id="iVK-1N-wPJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -14,7 +14,8 @@ import UIKit
 class MirrorCoordinator {
     
     var additionalWindows: [UIWindow] = []
-    
+    var projector: ProjectorViewController?
+
     var mirrorViewController: MirrorViewController? {
         didSet {
             self.mirrorViewController?.image = currentImage
@@ -29,6 +30,7 @@ class MirrorCoordinator {
     
     func setup(with projector: ProjectorViewController) {
         
+        self.projector = projector
         projector.mirrorCoordinator = self
         
         NotificationCenter.default.addObserver(forName: UIScreen.didConnectNotification, object: nil, queue: nil, using: screenDidConnect)
@@ -41,6 +43,9 @@ class MirrorCoordinator {
         // Get the new screen information.
         let newScreen = notification.object as! UIScreen
         let screenDimensions = newScreen.bounds
+        
+        // Make sure the size of the mirrored view matches the external display
+        self.projector?.mirrorSizeRatio = screenDimensions.size
         
         // Configure a window for the screen.
         let newWindow = UIWindow(frame: screenDimensions)
