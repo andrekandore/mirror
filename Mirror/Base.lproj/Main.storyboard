@@ -77,7 +77,7 @@
                         <outlet property="freezeDryer" destination="TzF-5K-shT" id="c1l-sT-2e4"/>
                     </connections>
                 </customObject>
-                <customObject id="RZc-ra-2OM" customClass="ViewCoordiator" customModule="Mirror" customModuleProvider="target">
+                <customObject id="RZc-ra-2OM" customClass="ViewGenerationCoordiator" customModule="Mirror" customModuleProvider="target">
                     <connections>
                         <outlet property="dragCoordinator" destination="fzo-bx-yBO" id="aR8-eI-Qwb"/>
                         <outlet property="projectorViewController" destination="BYZ-38-t0r" id="kEe-hS-g2r"/>

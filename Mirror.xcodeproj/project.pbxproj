@@ -11,7 +11,7 @@
 		B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30F706622227BBE00E38976 /* MirrorViewController.swift */; };
 		B33883332226B0B00085795D /* DragCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883322226B0B00085795D /* DragCoordinator.swift */; };
 		B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33883342226C2AC0085795D /* MirrorCoordinator.swift */; };
-		B3388337222739D90085795D /* ViewCoordiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388336222739D90085795D /* ViewCoordiator.swift */; };
+		B3388337222739D90085795D /* ViewGenerationCoordiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388336222739D90085795D /* ViewGenerationCoordiator.swift */; };
 		B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833822273E250085795D /* ViewFreezeDryer.swift */; };
 		B338833D222A99600085795D /* DelegatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833C222A99600085795D /* DelegatingViewController.swift */; };
 		B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */; };
@@ -39,7 +39,7 @@
 		B30F706622227BBE00E38976 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		B33883322226B0B00085795D /* DragCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragCoordinator.swift; sourceTree = "<group>"; };
 		B33883342226C2AC0085795D /* MirrorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorCoordinator.swift; sourceTree = "<group>"; };
-		B3388336222739D90085795D /* ViewCoordiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordiator.swift; sourceTree = "<group>"; };
+		B3388336222739D90085795D /* ViewGenerationCoordiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGenerationCoordiator.swift; sourceTree = "<group>"; };
 		B338833822273E250085795D /* ViewFreezeDryer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFreezeDryer.swift; sourceTree = "<group>"; };
 		B338833C222A99600085795D /* DelegatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingViewController.swift; sourceTree = "<group>"; };
 		B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClassPickerViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 				B338833822273E250085795D /* ViewFreezeDryer.swift */,
 				B33883342226C2AC0085795D /* MirrorCoordinator.swift */,
 				B33883322226B0B00085795D /* DragCoordinator.swift */,
-				B3388336222739D90085795D /* ViewCoordiator.swift */,
+				B3388336222739D90085795D /* ViewGenerationCoordiator.swift */,
 				B3913DA92222630C00A281B7 /* AppDelegate.swift */,
 				B3913DAD2222630C00A281B7 /* Main.storyboard */,
 				B3913DB02222630D00A281B7 /* Assets.xcassets */,
@@ -255,7 +255,7 @@
 				B338833D222A99600085795D /* DelegatingViewController.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
-				B3388337222739D90085795D /* ViewCoordiator.swift in Sources */,
+				B3388337222739D90085795D /* ViewGenerationCoordiator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

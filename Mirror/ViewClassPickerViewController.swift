@@ -78,8 +78,8 @@ extension ViewClassPickerViewController {
     var displayableViewClasses: [ViewClassInfo] {
         return allViewClasses.map { type in
             return (type, type.className)
-            }.sorted { tupple1, tupple2 in
-                return tupple1.name < tupple2.name
+        }.sorted { tupple1, tupple2 in
+            return tupple1.name < tupple2.name
         }
     }
 }

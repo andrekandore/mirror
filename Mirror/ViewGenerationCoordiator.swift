@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewCoordiator: NSObject, ViewControllerDelegating {
+class ViewGenerationCoordiator: NSObject, ViewControllerDelegating {
     
     @IBOutlet var projectorViewController: ProjectorViewController?
     @IBOutlet var dragCoordinator: DragCoordinator?
