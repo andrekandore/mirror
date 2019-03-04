@@ -90,7 +90,11 @@ extension ViewFreezeDryer {
         
         var views: [UIView] = []
         do {
-            views = try decoder.decode([DecodableView].self, from: jsonData)
+            let intermediateViews = try decoder.decode([IntermediateDecodableView].self, from: jsonData)
+            for view in intermediateViews {
+                debugPrint(view.finalClassForInstantiation ?? "")
+            }
+            views = try decoder.decode([UIView].self, from: jsonData)
         } catch let error {
             debugPrint(error)
         }
@@ -99,17 +103,72 @@ extension ViewFreezeDryer {
     }
 }
 
-extension UIView: Encodable {
+public protocol GeneratableView: Decodable where Self: UIView {
+    func encodeAdditionalInformation(into encoder: Encoder)
+    func decodeAdditionalInformation(from decoder: Decoder)
+    static func decodeBasicInformation(from decoder: Decoder) throws -> (rect: CGRect, backgroundColor: UIColor, coderClass: String)
+}
+
+extension UIView {
+    enum BasicCodingKeys: CodingKey {
+        case x
+        case y
+        case width
+        case height
+        case r
+        case g
+        case b
+        case a
+        case classForCoder
+    }
+}
+
+extension UIView: GeneratableView, Encodable {
+    
+    static public func decodeBasicInformation(from decoder: Decoder) throws -> (rect: CGRect, backgroundColor: UIColor, coderClass: String) {
+        
+        let container = try decoder.container(keyedBy: BasicCodingKeys.self)
+        
+        let height = try container.decode(CGFloat.self, forKey: BasicCodingKeys.height)
+        let width = try container.decode(CGFloat.self, forKey: BasicCodingKeys.width)
+        let x = try container.decode(CGFloat.self, forKey: BasicCodingKeys.x)
+        let y = try container.decode(CGFloat.self, forKey: BasicCodingKeys.y)
+        
+        
+        let rect = CGRect(x: x, y: y, width: width, height: height)
+        
+        let r = try container.decode(CGFloat.self, forKey: BasicCodingKeys.r)
+        let g = try container.decode(CGFloat.self, forKey: BasicCodingKeys.g)
+        let b = try container.decode(CGFloat.self, forKey: BasicCodingKeys.b)
+        let a = try container.decode(CGFloat.self, forKey: BasicCodingKeys.a)
+        
+        let color = UIColor(red: r, green: g, blue: b, alpha: a)
+        
+        let coderClass = try container.decode(String.self, forKey: BasicCodingKeys.classForCoder)
+        debugPrint(coderClass)
+        
+        return (rect: rect, backgroundColor: color, coderClass: coderClass)
+    }
+    
+    public func decodeAdditionalInformation(from decoder: Decoder) {
+        debugPrint(#function)
+    }
+    
+    
+    public func encodeAdditionalInformation(into encoder: Encoder) {
+        debugPrint(#function)
+    }
+    
     public func encode(to encoder: Encoder) throws {
         
-        var container = encoder.container(keyedBy: Keys.self)
+        var container = encoder.container(keyedBy: BasicCodingKeys.self)
 
         let rect = self.frame
 
-        try container.encode(rect.origin.x, forKey: Keys.x)
-        try container.encode(rect.origin.y, forKey: Keys.y)
-        try container.encode(rect.size.width, forKey: Keys.width)
-        try container.encode(rect.size.height, forKey: Keys.height)
+        try container.encode(rect.origin.x, forKey: BasicCodingKeys.x)
+        try container.encode(rect.origin.y, forKey: BasicCodingKeys.y)
+        try container.encode(rect.size.width, forKey: BasicCodingKeys.width)
+        try container.encode(rect.size.height, forKey: BasicCodingKeys.height)
         
         let color = self.backgroundColor ?? UIColor.black
         
@@ -120,45 +179,70 @@ extension UIView: Encodable {
         
         guard true == color.getRed(&r, green: &g, blue: &b, alpha: &a) else { return }
         
-        try container.encode(r, forKey: Keys.r)
-        try container.encode(g, forKey: Keys.g)
-        try container.encode(b, forKey: Keys.b)
-        try container.encode(a, forKey: Keys.a)
+        try container.encode(r, forKey: BasicCodingKeys.r)
+        try container.encode(g, forKey: BasicCodingKeys.g)
+        try container.encode(b, forKey: BasicCodingKeys.b)
+        try container.encode(a, forKey: BasicCodingKeys.a)
+        
+        try container.encode(self.className, forKey: .classForCoder)
+        debugPrint(self.className)
+        
+        self.encodeAdditionalInformation(into: encoder)
     }
     
-    enum Keys: CodingKey {
-        case x
-        case y
-        case width
-        case height
-        case r
-        case g
-        case b
-        case a
+}
+
+extension GeneratableView where Self: Decodable {
+    
+    public init(from decoder: Decoder) throws {
+
+        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
+        
+        self.init(frame: basicInfo.rect)
+        self.backgroundColor = basicInfo.backgroundColor
+    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
+}
+
+class IntermediateDecodableView: UIView {
+    
+    let finalClassForInstantiation: String?
+    
+    public init(from decoder: Decoder) throws {
+        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
+        self.finalClassForInstantiation = basicInfo.coderClass
+        super.init(frame: basicInfo.rect)
+        self.backgroundColor = basicInfo.backgroundColor
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.finalClassForInstantiation = nil
+        super.init(frame: .zero)
+    }
+    
+    required override init(frame: CGRect) {
+        self.finalClassForInstantiation = nil
+        super.init(frame: frame)
     }
 }
 
-@objc class DecodableView: UIView, Decodable {
-    required public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Keys.self)
-        let x = try container.decode(CGFloat.self, forKey: Keys.x)
-        let y = try container.decode(CGFloat.self, forKey: Keys.y)
-        let width = try container.decode(CGFloat.self, forKey: Keys.width)
-        let height = try container.decode(CGFloat.self, forKey: Keys.height)
-        
-        let rect = CGRect(x: x, y: y, width: width, height: height)
-        
-        let r = try container.decode(CGFloat.self, forKey: Keys.r)
-        let g = try container.decode(CGFloat.self, forKey: Keys.g)
-        let b = try container.decode(CGFloat.self, forKey: Keys.b)
-        let a = try container.decode(CGFloat.self, forKey: Keys.a)
-        
-        let color = UIColor(red: r, green: g, blue: b, alpha: a)
-        
-        super.init(frame: rect)
-        self.backgroundColor = color
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
+//class IntermediateDecodableView: UIView, Decodable {
+//
+//}
+
+//extension UIView: GeneratableView {
+//
+//}
+//
+//class DecodableActivityIndicatorView: UIActivityIndicatorView, GeneratableView {
+//    public required init(from decoder: Decoder) throws {
+//        super.init(style: .gray)
+//    }
+//
+//    required init(coder: NSCoder) {
+//        super.init(style: .gray)
+//    }
+//}
