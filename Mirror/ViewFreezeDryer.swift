@@ -94,7 +94,7 @@ extension ViewFreezeDryer {
             for view in intermediateViews {
                 debugPrint(view.finalClassForInstantiation ?? "")
             }
-            views = try decoder.decode([UIView].self, from: jsonData)
+            views = intermediateViews//= try decoder.decode([UIView].self, from: jsonData)
         } catch let error {
             debugPrint(error)
         }
@@ -103,10 +103,21 @@ extension ViewFreezeDryer {
     }
 }
 
-public protocol GeneratableView: Decodable where Self: UIView {
+public protocol EncodableView: Encodable {
+    
+    typealias BasicInformation = (
+        backgroundColor: UIColor,
+        coderClass: String,
+        rect: CGRect
+    )
+    
+    static func decodeBasicInformation(from decoder: Decoder) throws -> BasicInformation
+
     func encodeAdditionalInformation(into encoder: Encoder)
     func decodeAdditionalInformation(from decoder: Decoder)
-    static func decodeBasicInformation(from decoder: Decoder) throws -> (rect: CGRect, backgroundColor: UIColor, coderClass: String)
+}
+
+public protocol DecodableView: EncodableView, Decodable {
 }
 
 extension UIView {
@@ -123,9 +134,9 @@ extension UIView {
     }
 }
 
-extension UIView: GeneratableView, Encodable {
+extension UIView: EncodableView {
     
-    static public func decodeBasicInformation(from decoder: Decoder) throws -> (rect: CGRect, backgroundColor: UIColor, coderClass: String) {
+    static public func decodeBasicInformation(from decoder: Decoder) throws -> BasicInformation {
         
         let container = try decoder.container(keyedBy: BasicCodingKeys.self)
         
@@ -147,16 +158,16 @@ extension UIView: GeneratableView, Encodable {
         let coderClass = try container.decode(String.self, forKey: BasicCodingKeys.classForCoder)
         debugPrint(coderClass)
         
-        return (rect: rect, backgroundColor: color, coderClass: coderClass)
+        return (backgroundColor: color, coderClass: coderClass, rect: rect)
     }
     
     public func decodeAdditionalInformation(from decoder: Decoder) {
-        debugPrint(#function)
+        //debugPrint(#function)
     }
     
     
     public func encodeAdditionalInformation(into encoder: Encoder) {
-        debugPrint(#function)
+        //debugPrint(#function)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -192,31 +203,9 @@ extension UIView: GeneratableView, Encodable {
     
 }
 
-extension GeneratableView where Self: Decodable {
+class IntermediateDecodableView: UIView, DecodableView {
     
-    public init(from decoder: Decoder) throws {
-
-        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
-        
-        self.init(frame: basicInfo.rect)
-        self.backgroundColor = basicInfo.backgroundColor
-    }
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-}
-
-class IntermediateDecodableView: UIView {
-    
-    let finalClassForInstantiation: String?
-    
-    public init(from decoder: Decoder) throws {
-        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
-        self.finalClassForInstantiation = basicInfo.coderClass
-        super.init(frame: basicInfo.rect)
-        self.backgroundColor = basicInfo.backgroundColor
-        
-    }
+    var finalClassForInstantiation: String?
     
     required init?(coder aDecoder: NSCoder) {
         self.finalClassForInstantiation = nil
@@ -227,22 +216,12 @@ class IntermediateDecodableView: UIView {
         self.finalClassForInstantiation = nil
         super.init(frame: frame)
     }
+    
+    required convenience init(from decoder: Decoder) throws {
+        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
+        self.init(frame: basicInfo.rect)
+        self.finalClassForInstantiation = basicInfo.coderClass
+        self.backgroundColor = basicInfo.backgroundColor
+        
+    }
 }
-
-//class IntermediateDecodableView: UIView, Decodable {
-//
-//}
-
-//extension UIView: GeneratableView {
-//
-//}
-//
-//class DecodableActivityIndicatorView: UIActivityIndicatorView, GeneratableView {
-//    public required init(from decoder: Decoder) throws {
-//        super.init(style: .gray)
-//    }
-//
-//    required init(coder: NSCoder) {
-//        super.init(style: .gray)
-//    }
-//}
