@@ -61,7 +61,10 @@ extension DragCoordinator {
     }
 }
 
-/* Allow UIView Objects inside of this view to be dragged within and without, even if point is outside of the HitTest Area. */
+/*
+ Allow UIView Objects inside of this view to be dragged within
+ and without, even if point is outside of the HitTest Area.
+ */
 class AnyHitTestView: UIView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return self.subviews.compactMap { (subview: UIView) -> UIView? in
