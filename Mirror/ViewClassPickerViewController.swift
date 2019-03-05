@@ -46,7 +46,7 @@ extension ViewClassPickerViewController {
 extension ViewClassPickerViewController {
     
     typealias ViewClassInfo = (type: ViewType, name: String)
-    typealias ViewType = NSObject.Type
+    typealias ViewType = EncodableView.Type
     
     private var allViewClasses: [ViewType] {
         return builtinViewClasses + additionalCustomUIViewClasses
@@ -55,7 +55,7 @@ extension ViewClassPickerViewController {
     private var builtinViewClasses: [ViewType] {
         return [
             UIActivityIndicatorView.self,
-            UIAlertController.self,
+//            UIAlertController.self,
             UIButton.self,
             UIDatePicker.self,
             UIImageView.self,

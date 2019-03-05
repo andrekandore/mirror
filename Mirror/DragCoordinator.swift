@@ -73,6 +73,6 @@ class AnyHitTestView: UIView {
             } else {
                 return super.hitTest(point, with: event)
             }
-            }.first ?? self
+        }.first ?? self
     }
 }

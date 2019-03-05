@@ -89,12 +89,22 @@ extension ViewFreezeDryer {
     func rehydrateViews(from jsonData: Data, using decoder: JSONDecoder = JSONDecoder()) -> [UIView] {
         
         var views: [UIView] = []
+        views = []
         do {
-            let intermediateViews = try decoder.decode([IntermediateDecodableView].self, from: jsonData)
+            var _: Decodable? = nil
+            let intermediateViews = try decoder.decode([BasicDecodableView].self, from: jsonData)
             for view in intermediateViews {
-                debugPrint(view.finalClassForInstantiation ?? "")
+                
+                guard let classForInstantiation = view.finalClassForInstantiation else { continue }
+                guard let cClassName = UnsafePointer<Int8>(classForInstantiation.cString(using: .utf8)) else { continue }
+                guard let instantiationClass = objc_getClass(cClassName) as? NSObjectProtocol.Type else { continue }
+                guard let decodingClass = instantiationClass as? DecodableView.Type else { continue }
+                debugPrint(decodingClass)
+                
+//                guard let aNewObject = decodingClass.new(from: decoder) else { continue }
+                
             }
-            views = intermediateViews//= try decoder.decode([UIView].self, from: jsonData)
+//            views = intermediateViews//= try decoder.decode([UIView].self, from: jsonData)
         } catch let error {
             debugPrint(error)
         }
@@ -103,7 +113,7 @@ extension ViewFreezeDryer {
     }
 }
 
-public protocol EncodableView: Encodable {
+public protocol EncodableView: Encodable, NSObjectProtocol {
     
     typealias BasicInformation = (
         backgroundColor: UIColor,
@@ -112,12 +122,16 @@ public protocol EncodableView: Encodable {
     )
     
     static func decodeBasicInformation(from decoder: Decoder) throws -> BasicInformation
-
-    func encodeAdditionalInformation(into encoder: Encoder)
-    func decodeAdditionalInformation(from decoder: Decoder)
+    
+    func encodeAdditionalProperties(into encoder: Encoder)
+    static func createNew() -> Self
 }
 
-public protocol DecodableView: EncodableView, Decodable {
+//public protocol IntermediateDecodableView: EncodableView {}
+
+public protocol DecodableView: EncodableView {
+    func decodeAndApplyAdditionalProperties(from decoder: Decoder)
+    static func new(from decoder: Decoder) -> Self
 }
 
 extension UIView {
@@ -134,8 +148,17 @@ extension UIView {
     }
 }
 
+extension EncodableView {
+    public func decodeAndApplyAdditionalProperties(from decoder: Decoder) {}
+    public func encodeAdditionalProperties(into encoder: Encoder) {}
+}
+
 extension UIView: EncodableView {
-    
+
+    @objc public class func createNew() -> Self {
+        return self.init()
+    }
+
     static public func decodeBasicInformation(from decoder: Decoder) throws -> BasicInformation {
         
         let container = try decoder.container(keyedBy: BasicCodingKeys.self)
@@ -161,13 +184,11 @@ extension UIView: EncodableView {
         return (backgroundColor: color, coderClass: coderClass, rect: rect)
     }
     
-    public func decodeAdditionalInformation(from decoder: Decoder) {
-        //debugPrint(#function)
-    }
-    
-    
-    public func encodeAdditionalInformation(into encoder: Encoder) {
-        //debugPrint(#function)
+    public func decodeAndApplyBasicProperties(from decoder: Decoder) throws {
+        
+        let basicInformation = try type(of: self).decodeBasicInformation(from: decoder)
+        self.frame = basicInformation.rect
+        self.backgroundColor = basicInformation.backgroundColor
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -198,14 +219,21 @@ extension UIView: EncodableView {
         try container.encode(self.className, forKey: .classForCoder)
         debugPrint(self.className)
         
-        self.encodeAdditionalInformation(into: encoder)
+        self.encodeAdditionalProperties(into: encoder)
     }
     
 }
 
-class IntermediateDecodableView: UIView, DecodableView {
+class BasicDecodableView: UIView, DecodableView, Decodable {
+    
+    static func new(from decoder: Decoder) -> Self {
+        return try! self.init(from: decoder)
+    }
     
     var finalClassForInstantiation: String?
+    
+    var subDecodableViews: [BasicDecodableView] = []
+    var actualSelf: UIView? = nil
     
     required init?(coder aDecoder: NSCoder) {
         self.finalClassForInstantiation = nil
@@ -218,10 +246,80 @@ class IntermediateDecodableView: UIView, DecodableView {
     }
     
     required convenience init(from decoder: Decoder) throws {
-        let basicInfo = try UIView.decodeBasicInformation(from: decoder)
+        let basicInfo = try type(of: self).decodeBasicInformation(from: decoder)
         self.init(frame: basicInfo.rect)
         self.finalClassForInstantiation = basicInfo.coderClass
         self.backgroundColor = basicInfo.backgroundColor
+    }
+    
+}
+
+extension UISlider: DecodableView {
+    
+    public func decodeAndApplyAdditionalProperties(from decoder: Decoder) {
         
     }
+    
+    public func encodeAdditionalProperties(into encoder: Encoder) {
+        
+    }
+    
+    
+    public static func new(from decoder: Decoder) -> Self {
+        let basicData = try? self.decodeBasicInformation(from: decoder)
+//        let additionalData = self.decodeAdditionalInformation(from: decoder)
+        let newObject = self.init(frame: basicData?.rect ?? .zero)
+        return newObject
+    }
+    
+    enum Keys: CodingKey {
+        case minimumValueImage
+        case maximumValueImage
+        case minimumValue
+        case maximumValue
+        case isContinuous
+        case value
+    }
+    
+}
+
+extension UIButton: DecodableView {
+    
+    public func encodeAdditionalProperties(into encoder: Encoder) {
+        
+    }
+    
+    public func decodeAndApplyAdditionalProperties(from decoder: Decoder) {
+        
+    }
+    
+    public static func new(from decoder: Decoder) -> Self {
+        
+        guard let container = try? decoder.container(keyedBy: Keys.self) else {
+            return self.init()
+        }
+        
+        let type = try? container.decode(Int.self, forKey: Keys.ButtonType)
+        let newButton = self.init(type: ButtonType(rawValue: type ?? 0) ?? .system)
+        try? newButton.decodeAndApplyBasicProperties(from: decoder)
+        newButton.decodeAndApplyAdditionalProperties(from: decoder)
+        
+        return newButton
+    }
+    
+    enum Keys: CodingKey {
+        case ButtonType
+    }
+ 
+    public override static func createNew() -> Self {
+        let newself = self.init(type: .system)
+        
+        let button = newself as UIButton
+        button.frame = CGRect.init(x: 0, y: 0, width: 10, height: 10)
+        button.setTitle("Button", for: .normal)
+        button.sizeToFit()
+        
+        return newself
+    }
+
 }

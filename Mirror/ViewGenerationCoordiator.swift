@@ -36,7 +36,7 @@ class ViewGenerationCoordiator: NSObject, ViewControllerDelegating {
             
             debugPrint(viewClass)
             
-            let initializedClass = viewClass.init()
+            let initializedClass = viewClass.createNew()
             guard let viewClass = initializedClass as? UIView else {
                 return
             }
