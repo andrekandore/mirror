@@ -17,7 +17,7 @@ class ViewClassPickerViewController: UITableViewController {
 extension ViewClassPickerViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.className, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.shortClassName, for: indexPath)
         cell.textLabel?.text = displayableViewClasses.any(at: indexPath.row)?.name
         
         return cell

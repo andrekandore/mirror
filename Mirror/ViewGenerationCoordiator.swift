@@ -22,7 +22,7 @@ class ViewGenerationCoordiator: NSObject, ViewControllerDelegating {
 
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier == ViewClassPickerViewController.className else {
+        guard segue.identifier == ViewClassPickerViewController.shortClassName else {
             return
         }
         

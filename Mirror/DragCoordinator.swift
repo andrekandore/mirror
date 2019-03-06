@@ -8,18 +8,6 @@
 
 import UIKit
 
-extension NSObject {
-    var className: String {
-        return String(describing: type(of: self))
-    }
-}
-
-extension NSObjectProtocol {
-    static var className: String {
-        return String(describing: self)
-    }
-}
-
 class DragCoordinator: NSObject {
     
     @IBOutlet private var gestureRecognizers: [UIGestureRecognizer] = []

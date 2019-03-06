@@ -22,6 +22,11 @@
 		B3913DB12222630D00A281B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3913DB02222630D00A281B7 /* Assets.xcassets */; };
 		B3913DB42222630D00A281B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DB22222630D00A281B7 /* LaunchScreen.storyboard */; };
 		B3913DBF2222630D00A281B7 /* MirrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DBE2222630D00A281B7 /* MirrorTests.swift */; };
+		B3C6EA03222FF2E700028682 /* CodableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA02222FF2E700028682 /* CodableViews.swift */; };
+		B3C6EA05222FF31E00028682 /* BasicDecodableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA04222FF31E00028682 /* BasicDecodableView.swift */; };
+		B3C6EA07222FF34500028682 /* UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA06222FF34500028682 /* UISlider.swift */; };
+		B3C6EA09222FF35700028682 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA08222FF35700028682 /* UIImage.swift */; };
+		B3C6EA0B222FF36F00028682 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA0A222FF36F00028682 /* UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,11 @@
 		B3913DBA2222630D00A281B7 /* MirrorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MirrorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DBE2222630D00A281B7 /* MirrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorTests.swift; sourceTree = "<group>"; };
 		B3913DC02222630D00A281B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3C6EA02222FF2E700028682 /* CodableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableViews.swift; sourceTree = "<group>"; };
+		B3C6EA04222FF31E00028682 /* BasicDecodableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDecodableView.swift; sourceTree = "<group>"; };
+		B3C6EA06222FF34500028682 /* UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlider.swift; sourceTree = "<group>"; };
+		B3C6EA08222FF35700028682 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		B3C6EA0A222FF36F00028682 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +123,7 @@
 		B3913DA82222630C00A281B7 /* Mirror */ = {
 			isa = PBXGroup;
 			children = (
+				B3C6EA01222FF2CE00028682 /* Codable Views */,
 				B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */,
 				B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */,
 				B30F706622227BBE00E38976 /* MirrorViewController.swift */,
@@ -137,6 +148,18 @@
 				B3913DC02222630D00A281B7 /* Info.plist */,
 			);
 			path = MirrorTests;
+			sourceTree = "<group>";
+		};
+		B3C6EA01222FF2CE00028682 /* Codable Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3C6EA04222FF31E00028682 /* BasicDecodableView.swift */,
+				B3C6EA02222FF2E700028682 /* CodableViews.swift */,
+				B3C6EA08222FF35700028682 /* UIImage.swift */,
+				B3C6EA06222FF34500028682 /* UISlider.swift */,
+				B3C6EA0A222FF36F00028682 /* UIButton.swift */,
+			);
+			path = "Codable Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,13 +272,18 @@
 				B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */,
 				B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */,
 				B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */,
+				B3C6EA05222FF31E00028682 /* BasicDecodableView.swift in Sources */,
 				B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */,
+				B3C6EA0B222FF36F00028682 /* UIButton.swift in Sources */,
 				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
 				B3388341222AB2E50085795D /* Extensions.swift in Sources */,
 				B338833D222A99600085795D /* DelegatingViewController.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
 				B3388337222739D90085795D /* ViewGenerationCoordiator.swift in Sources */,
+				B3C6EA03222FF2E700028682 /* CodableViews.swift in Sources */,
+				B3C6EA07222FF34500028682 /* UISlider.swift in Sources */,
+				B3C6EA09222FF35700028682 /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

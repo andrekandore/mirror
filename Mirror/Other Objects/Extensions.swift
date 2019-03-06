@@ -23,3 +23,67 @@ extension UIView {
         self.layer.backgroundColor = color.cgColor
     }
 }
+
+extension NSObject {
+    var className: String {
+        return String(NSStringFromClass(type(of: self)))
+    }
+    var shortClassName: String {
+        return String(describing: type(of: self))
+    }
+}
+
+extension NSObjectProtocol {
+    static var className: String {
+        return String(NSStringFromClass(self))
+    }
+    static var shortClassName: String {
+        return String(describing: self)
+    }
+}
+
+extension UIControl.State: Codable {}
+
+extension UIButton {
+    
+    var highlightedTitle: String? {
+        get {
+            return self.title(for: .highlighted)
+        } set {
+            self.setTitle(newValue, for: .highlighted)
+        }
+    }
+    
+    var disabledTitle: String? {
+        get {
+            return self.title(for: .disabled)
+        } set {
+            self.setTitle(newValue, for: .disabled)
+        }
+    }
+    
+    var selectedTitle: String? {
+        get {
+            return self.title(for: .selected)
+        } set {
+            self.setTitle(newValue, for: .selected)
+        }
+    }
+    
+    var focusedTitle: String? {
+        get {
+            return self.title(for: .focused)
+        } set {
+            self.setTitle(newValue, for: .focused)
+        }
+    }
+    
+    var normalTitle: String? {
+        get {
+            return self.title(for: .normal)
+        } set {
+            self.setTitle(newValue, for: .normal)
+        }
+    }
+    
+}
