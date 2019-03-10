@@ -17,6 +17,7 @@
 		B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */; };
 		B3388341222AB2E50085795D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388340222AB2E50085795D /* Extensions.swift */; };
 		B36CA28E2234D3BE0044A3D5 /* UIViewExtraProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */; };
+		B36CA2902235003B0044A3D5 /* UIViewBasicCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA28F2235003B0044A3D5 /* UIViewBasicCoding.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
 		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClassPickerViewController.swift; sourceTree = "<group>"; };
 		B3388340222AB2E50085795D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtraProperties.swift; sourceTree = "<group>"; };
+		B36CA28F2235003B0044A3D5 /* UIViewBasicCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewBasicCoding.swift; sourceTree = "<group>"; };
 		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				B3C6EA04222FF31E00028682 /* BasicDecodableView.swift */,
 				B3C6EA02222FF2E700028682 /* CodableViews.swift */,
+				B36CA28F2235003B0044A3D5 /* UIViewBasicCoding.swift */,
 				B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */,
 				B3C6EA08222FF35700028682 /* UIImage.swift */,
 				B3C6EA06222FF34500028682 /* UISlider.swift */,
@@ -332,6 +335,7 @@
 				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
 				B3388341222AB2E50085795D /* Extensions.swift in Sources */,
 				B338833D222A99600085795D /* DelegatingViewController.swift in Sources */,
+				B36CA2902235003B0044A3D5 /* UIViewBasicCoding.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
 				B3C6EA1D2233CA8D00028682 /* CGSize.swift in Sources */,
