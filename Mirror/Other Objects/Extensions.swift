@@ -87,3 +87,20 @@ extension UIButton {
     }
     
 }
+
+extension Optional {
+    func `do`(_ with: (Wrapped) -> Void) {
+        if let unwrapped = self {
+            with(unwrapped)
+        }
+    }
+}
+
+extension Optional where Wrapped: UIColor {
+    var orClear: UIColor {
+        if let color = self {
+            return color
+        }
+        return UIColor.clear
+    }
+}

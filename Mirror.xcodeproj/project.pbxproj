@@ -16,6 +16,7 @@
 		B338833D222A99600085795D /* DelegatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833C222A99600085795D /* DelegatingViewController.swift */; };
 		B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */; };
 		B3388341222AB2E50085795D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388340222AB2E50085795D /* Extensions.swift */; };
+		B36CA28E2234D3BE0044A3D5 /* UIViewExtraProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
 		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
@@ -27,6 +28,15 @@
 		B3C6EA07222FF34500028682 /* UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA06222FF34500028682 /* UISlider.swift */; };
 		B3C6EA09222FF35700028682 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA08222FF35700028682 /* UIImage.swift */; };
 		B3C6EA0B222FF36F00028682 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA0A222FF36F00028682 /* UIButton.swift */; };
+		B3C6EA0D2233B57100028682 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA0C2233B57100028682 /* UIEdgeInsets.swift */; };
+		B3C6EA0F2233B6AB00028682 /* NSDirectionalEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA0E2233B6AB00028682 /* NSDirectionalEdgeInsets.swift */; };
+		B3C6EA122233BC6700028682 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA112233BC6700028682 /* UIColor.swift */; };
+		B3C6EA142233C2A800028682 /* CreatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA132233C2A800028682 /* CreatableView.swift */; };
+		B3C6EA162233C53500028682 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA152233C53500028682 /* CGRect.swift */; };
+		B3C6EA192233C85400028682 /* CustomCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA182233C85400028682 /* CustomCodable.swift */; };
+		B3C6EA1B2233CA6D00028682 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA1A2233CA6D00028682 /* CGPoint.swift */; };
+		B3C6EA1D2233CA8D00028682 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA1C2233CA8D00028682 /* CGSize.swift */; };
+		B3C6EA1F2233DF3400028682 /* CustomCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6EA1E2233DF3400028682 /* CustomCodableWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,7 @@
 		B338833C222A99600085795D /* DelegatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatingViewController.swift; sourceTree = "<group>"; };
 		B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClassPickerViewController.swift; sourceTree = "<group>"; };
 		B3388340222AB2E50085795D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtraProperties.swift; sourceTree = "<group>"; };
 		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +75,15 @@
 		B3C6EA06222FF34500028682 /* UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlider.swift; sourceTree = "<group>"; };
 		B3C6EA08222FF35700028682 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		B3C6EA0A222FF36F00028682 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		B3C6EA0C2233B57100028682 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		B3C6EA0E2233B6AB00028682 /* NSDirectionalEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets.swift; sourceTree = "<group>"; };
+		B3C6EA112233BC6700028682 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		B3C6EA132233C2A800028682 /* CreatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatableView.swift; sourceTree = "<group>"; };
+		B3C6EA152233C53500028682 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		B3C6EA182233C85400028682 /* CustomCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCodable.swift; sourceTree = "<group>"; };
+		B3C6EA1A2233CA6D00028682 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		B3C6EA1C2233CA8D00028682 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		B3C6EA1E2233DF3400028682 /* CustomCodableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCodableWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +143,8 @@
 		B3913DA82222630C00A281B7 /* Mirror */ = {
 			isa = PBXGroup;
 			children = (
+				B3C6EA172233C83000028682 /* Custom Codable */,
+				B3C6EA102233BC5900028682 /* Codable Objects */,
 				B3C6EA01222FF2CE00028682 /* Codable Views */,
 				B338833E222AB2BD0085795D /* ViewClassPickerViewController.swift */,
 				B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */,
@@ -131,6 +153,7 @@
 				B33883342226C2AC0085795D /* MirrorCoordinator.swift */,
 				B33883322226B0B00085795D /* DragCoordinator.swift */,
 				B3388336222739D90085795D /* ViewGenerationCoordiator.swift */,
+				B3C6EA132233C2A800028682 /* CreatableView.swift */,
 				B3913DA92222630C00A281B7 /* AppDelegate.swift */,
 				B3913DAD2222630C00A281B7 /* Main.storyboard */,
 				B3913DB02222630D00A281B7 /* Assets.xcassets */,
@@ -155,11 +178,34 @@
 			children = (
 				B3C6EA04222FF31E00028682 /* BasicDecodableView.swift */,
 				B3C6EA02222FF2E700028682 /* CodableViews.swift */,
+				B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */,
 				B3C6EA08222FF35700028682 /* UIImage.swift */,
 				B3C6EA06222FF34500028682 /* UISlider.swift */,
 				B3C6EA0A222FF36F00028682 /* UIButton.swift */,
+				B3C6EA0E2233B6AB00028682 /* NSDirectionalEdgeInsets.swift */,
+				B3C6EA0C2233B57100028682 /* UIEdgeInsets.swift */,
 			);
 			path = "Codable Views";
+			sourceTree = "<group>";
+		};
+		B3C6EA102233BC5900028682 /* Codable Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B3C6EA112233BC6700028682 /* UIColor.swift */,
+			);
+			path = "Codable Objects";
+			sourceTree = "<group>";
+		};
+		B3C6EA172233C83000028682 /* Custom Codable */ = {
+			isa = PBXGroup;
+			children = (
+				B3C6EA1E2233DF3400028682 /* CustomCodableWrapper.swift */,
+				B3C6EA182233C85400028682 /* CustomCodable.swift */,
+				B3C6EA152233C53500028682 /* CGRect.swift */,
+				B3C6EA1A2233CA6D00028682 /* CGPoint.swift */,
+				B3C6EA1C2233CA8D00028682 /* CGSize.swift */,
+			);
+			path = "Custom Codable";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,17 +315,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C6EA1B2233CA6D00028682 /* CGPoint.swift in Sources */,
+				B36CA28E2234D3BE0044A3D5 /* UIViewExtraProperties.swift in Sources */,
+				B3C6EA0F2233B6AB00028682 /* NSDirectionalEdgeInsets.swift in Sources */,
 				B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */,
+				B3C6EA1F2233DF3400028682 /* CustomCodableWrapper.swift in Sources */,
 				B338833F222AB2BD0085795D /* ViewClassPickerViewController.swift in Sources */,
 				B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */,
 				B3C6EA05222FF31E00028682 /* BasicDecodableView.swift in Sources */,
 				B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */,
+				B3C6EA142233C2A800028682 /* CreatableView.swift in Sources */,
+				B3C6EA162233C53500028682 /* CGRect.swift in Sources */,
 				B3C6EA0B222FF36F00028682 /* UIButton.swift in Sources */,
+				B3C6EA192233C85400028682 /* CustomCodable.swift in Sources */,
+				B3C6EA0D2233B57100028682 /* UIEdgeInsets.swift in Sources */,
 				B33883352226C2AC0085795D /* MirrorCoordinator.swift in Sources */,
 				B3388341222AB2E50085795D /* Extensions.swift in Sources */,
 				B338833D222A99600085795D /* DelegatingViewController.swift in Sources */,
 				B33883332226B0B00085795D /* DragCoordinator.swift in Sources */,
 				B30F706722227BBE00E38976 /* MirrorViewController.swift in Sources */,
+				B3C6EA1D2233CA8D00028682 /* CGSize.swift in Sources */,
+				B3C6EA122233BC6700028682 /* UIColor.swift in Sources */,
 				B3388337222739D90085795D /* ViewGenerationCoordiator.swift in Sources */,
 				B3C6EA03222FF2E700028682 /* CodableViews.swift in Sources */,
 				B3C6EA07222FF34500028682 /* UISlider.swift in Sources */,

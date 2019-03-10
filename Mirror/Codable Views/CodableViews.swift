@@ -8,61 +8,22 @@
 
 import UIKit
 
-public protocol CreatableView: NSObjectProtocol {
-    static func createNew() -> Self
-}
 
-extension UIView: CreatableView {
-    @objc public class func createNew() -> Self {
-        return self.init()
-    }
-}
-
+/*
+ MARK: - Encodable View Protocol -
+ */
 public protocol EncodableView: Encodable, CreatableView {
-    
-    typealias BasicProperties = (
-        backgroundColor: UIColor,
-        coderClass: String,
-        rect: CGRect
-    )
-    
+    typealias BasicProperties = ( backgroundColor: UIColor, coderClass: String, rect: CGRect )
     func encodeBasicProperties(into encoder: Encoder) throws
 }
 
-public protocol AdditionalEncodableView: EncodableView {
+public protocol AdditionalPropertyEncodableView: EncodableView {
     func encodeAdditionalProperties(into encoder: Encoder) throws
 }
 
-extension UIView: EncodableView {
-    public func encodeBasicProperties(into encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: BasicCodingKeys.self)
-        
-        let rect = self.frame
-        
-        try container.encode(rect.origin.x, forKey: BasicCodingKeys.x)
-        try container.encode(rect.origin.y, forKey: BasicCodingKeys.y)
-        try container.encode(rect.size.width, forKey: BasicCodingKeys.width)
-        try container.encode(rect.size.height, forKey: BasicCodingKeys.height)
-        
-        let color = self.backgroundColor ?? UIColor.black
-        
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        
-        guard true == color.getRed(&r, green: &g, blue: &b, alpha: &a) else { return }
-        
-        try container.encode(r, forKey: BasicCodingKeys.r)
-        try container.encode(g, forKey: BasicCodingKeys.g)
-        try container.encode(b, forKey: BasicCodingKeys.b)
-        try container.encode(a, forKey: BasicCodingKeys.a)
-        
-        try container.encode(self.className, forKey: .classForCoder)
-        debugPrint(self.className)
-    }
-}
-
+/*
+ MARK: - Decoodable View Protocol -
+ */
 public protocol DecodableView: EncodableView {
     static func decodeBasicProperties(from decoder: Decoder) throws -> BasicProperties
     
@@ -70,70 +31,77 @@ public protocol DecodableView: EncodableView {
     func decodeAndApplyAdditionalProperties(from decoder: Decoder)
 }
 
-public protocol IndirectlyDecodableView: DecodableView & AdditionalEncodableView {
+extension DecodableView {
+    public func decodeAndApplyAdditionalProperties(from decoder: Decoder) {}
+}
+
+/*
+ MARK: - Indirect Decoding -
+ */
+public protocol IndirectlyDecodableView: DecodableView & AdditionalPropertyEncodableView {
     static func new(from decoder: Decoder) -> Self
 }
 
-protocol CodableView: IndirectlyDecodableView & Decodable {}
+protocol CodableView: IndirectlyDecodableView & Decodable where Self: UIView {}
+
 
 extension UIView {
     enum BasicCodingKeys: CodingKey {
-        case x
-        case y
-        case width
-        case height
-        case r
-        case g
-        case b
-        case a
+        case additionalProperties
+        case backgroundColor
         case classForCoder
+        case frame
     }
-}
-
-extension DecodableView {
-    public func decodeAndApplyAdditionalProperties(from decoder: Decoder) {}
 }
 
 extension UIView: Encodable {
     public func encode(to encoder: Encoder) throws {
         try (self as EncodableView).encodeBasicProperties(into: encoder)
-        try (self as? AdditionalEncodableView)?.encodeAdditionalProperties(into: encoder)
+        try (self as? AdditionalPropertyEncodableView)?.encodeAdditionalProperties(into: encoder)
     }
 }
 
+extension UIView: EncodableView {
+    public func encodeBasicProperties(into encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: BasicCodingKeys.self)
+        
+        try? container.encode(AdditionalBasicProperties.init(from: self), forKey: BasicCodingKeys.additionalProperties)
+        try? container.encode(self.backgroundColor.orClear, forKey: BasicCodingKeys.backgroundColor)
+        try container.encode(self.frame.asCustomEncodable, forKey: BasicCodingKeys.frame)
+        try container.encode(self.className, forKey: .classForCoder)
+        
+        debugPrint(self.className)
+    }
+}
 
 extension UIView: DecodableView  {
     
     static public func decodeBasicProperties(from decoder: Decoder) throws -> BasicProperties {
-        
         let container = try decoder.container(keyedBy: BasicCodingKeys.self)
-        
-        let height = try container.decode(CGFloat.self, forKey: BasicCodingKeys.height)
-        let width = try container.decode(CGFloat.self, forKey: BasicCodingKeys.width)
-        let x = try container.decode(CGFloat.self, forKey: BasicCodingKeys.x)
-        let y = try container.decode(CGFloat.self, forKey: BasicCodingKeys.y)
-        
-        
-        let rect = CGRect(x: x, y: y, width: width, height: height)
-        
-        let r = try container.decode(CGFloat.self, forKey: BasicCodingKeys.r)
-        let g = try container.decode(CGFloat.self, forKey: BasicCodingKeys.g)
-        let b = try container.decode(CGFloat.self, forKey: BasicCodingKeys.b)
-        let a = try container.decode(CGFloat.self, forKey: BasicCodingKeys.a)
-        
-        let color = UIColor(red: r, green: g, blue: b, alpha: a)
-        
+        let backgroundColor = (try? container.decode(DecodableColor.self, forKey: BasicCodingKeys.backgroundColor)).orClear
         let coderClass = try container.decode(String.self, forKey: BasicCodingKeys.classForCoder)
-        debugPrint(coderClass)
-        
-        return (backgroundColor: color, coderClass: coderClass, rect: rect)
+        let frame = try container.decode(UIRect.self, forKey: BasicCodingKeys.frame).wrapped
+        return (backgroundColor: backgroundColor, coderClass: coderClass, rect: frame)
     }
     
     public func decodeAndApplyBasicProperties(from decoder: Decoder) {
-        guard let basicInformation = try? type(of: self)
-            .decodeBasicProperties(from: decoder) else { return }
-        self.frame = basicInformation.rect
+        
+        guard let basicInformation
+            = try? type(of: self).decodeBasicProperties(from: decoder) else {
+            return
+        }
+        
         self.backgroundColor = basicInformation.backgroundColor
+        self.frame = basicInformation.rect
+        
+        let container = try? decoder.container(keyedBy: BasicCodingKeys.self)
+        let extraProperties = try? container?.decodeIfPresent(
+            AdditionalBasicProperties.self,
+            forKey: BasicCodingKeys.additionalProperties
+        )
+        
+        extraProperties??.apply(to: self)
     }
     
 }
+
