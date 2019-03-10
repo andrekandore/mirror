@@ -65,23 +65,3 @@ extension UIView.AdditionalBasicProperties {
         self.tag.do { view.tag = $0 }
     }
 }
-
-//        enum Keys: CodingKey {
-//            case insetsLayoutMarginsFromSafeArea
-//            case preservesSuperviewLayoutMargins
-//            case isUserInteractionEnabled
-//            case semanticContentAttribute
-//            case isMultipleTouchEnabled
-//            case autoresizesSubviews
-//            case contentScaleFactor
-//            case isExclusiveTouch
-//            case autoresizingMask
-//            case backgroundColor
-//            case safeAreaInsets
-//            case clipsToBounds
-//            case classForCoder
-//            case layoutMargins
-//            case transform
-//            case frame
-//            case tag
-//        }
