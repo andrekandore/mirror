@@ -18,6 +18,7 @@
 		B3388341222AB2E50085795D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3388340222AB2E50085795D /* Extensions.swift */; };
 		B36CA28E2234D3BE0044A3D5 /* UIViewExtraProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */; };
 		B36CA2902235003B0044A3D5 /* UIViewBasicCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA28F2235003B0044A3D5 /* UIViewBasicCoding.swift */; };
+		B36CA292223684270044A3D5 /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CA291223684270044A3D5 /* CGAffineTransform.swift */; };
 		B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DA92222630C00A281B7 /* AppDelegate.swift */; };
 		B3913DAC2222630C00A281B7 /* ProjectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */; };
 		B3913DAF2222630C00A281B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3913DAD2222630C00A281B7 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		B3388340222AB2E50085795D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B36CA28D2234D3BE0044A3D5 /* UIViewExtraProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtraProperties.swift; sourceTree = "<group>"; };
 		B36CA28F2235003B0044A3D5 /* UIViewBasicCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewBasicCoding.swift; sourceTree = "<group>"; };
+		B36CA291223684270044A3D5 /* CGAffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAffineTransform.swift; sourceTree = "<group>"; };
 		B3913DA62222630C00A281B7 /* Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3913DA92222630C00A281B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3913DAB2222630C00A281B7 /* ProjectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectorViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				B3C6EA1E2233DF3400028682 /* CustomCodableWrapper.swift */,
 				B3C6EA182233C85400028682 /* CustomCodable.swift */,
+				B36CA291223684270044A3D5 /* CGAffineTransform.swift */,
 				B3C6EA152233C53500028682 /* CGRect.swift */,
 				B3C6EA1A2233CA6D00028682 /* CGPoint.swift */,
 				B3C6EA1C2233CA8D00028682 /* CGSize.swift */,
@@ -327,6 +330,7 @@
 				B338833922273E250085795D /* ViewFreezeDryer.swift in Sources */,
 				B3C6EA05222FF31E00028682 /* BasicDecodableView.swift in Sources */,
 				B3913DAA2222630C00A281B7 /* AppDelegate.swift in Sources */,
+				B36CA292223684270044A3D5 /* CGAffineTransform.swift in Sources */,
 				B3C6EA142233C2A800028682 /* CreatableView.swift in Sources */,
 				B3C6EA162233C53500028682 /* CGRect.swift in Sources */,
 				B3C6EA0B222FF36F00028682 /* UIButton.swift in Sources */,

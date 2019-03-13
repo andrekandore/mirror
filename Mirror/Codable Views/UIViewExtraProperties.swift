@@ -15,7 +15,7 @@ extension UIView {
         var preservesSuperviewLayoutMargins: Bool?
         var autoresizingMask: AutoresizingMask?
         var isUserInteractionEnabled: Bool?
-        var transform: CGAffineTransform?
+        var transform: UIAffineTransform?
         var isMultipleTouchEnabled: Bool?
         var layoutMargins: UIEdgeInsets?
         var contentScaleFactor: CGFloat?
@@ -43,7 +43,7 @@ extension UIView.AdditionalBasicProperties {
         self.autoresizingMask = view.autoresizingMask
         self.clipsToBounds = view.clipsToBounds
         self.layoutMargins = view.layoutMargins
-        self.transform = view.transform
+        self.transform = view.transform.asCustomEncodable
         self.tag = view.tag
     }
 }
@@ -61,7 +61,7 @@ extension UIView.AdditionalBasicProperties {
         self.autoresizingMask.do { view.autoresizingMask = $0 }
         self.clipsToBounds.do { view.clipsToBounds = $0 }
         self.layoutMargins.do { view.layoutMargins = $0 }
-        self.transform.do { view.transform = $0 }
+        self.transform.do { view.transform = $0.wrapped }
         self.tag.do { view.tag = $0 }
     }
 }
