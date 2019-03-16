@@ -8,13 +8,17 @@
 
 import CoreGraphics
 
-class UIAffineTransform: CustomCodableWrapper, Codable {
+struct UIAffineTransform: CustomCodableWrapper, Codable, Equatable {
     
     typealias Wrapped = CGAffineTransform
     var wrapped: Wrapped
     
-    required init(with wrapped: Wrapped) {
+    init(with wrapped: Wrapped) {
         self.wrapped = wrapped
+    }
+    
+    static var identity: UIAffineTransform {
+        return UIAffineTransform.init(with: .identity)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -27,7 +31,7 @@ class UIAffineTransform: CustomCodableWrapper, Codable {
         try container.encode(self.wrapped.ty, forKey: Keys.transformY)
     }
     
-    required public convenience init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
         let scaleX = try container.decode(CGFloat.self, forKey: Keys.scaleX)

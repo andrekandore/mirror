@@ -38,12 +38,14 @@ extension UIView: EncodableView {
         
         var container = encoder.container(keyedBy: BasicCodingKeys.self)
         
-        try? container.encode(AdditionalBasicProperties.init(from: self), forKey: BasicCodingKeys.additionalProperties)
+        try? container.encodeIfPresent(AdditionalBasicProperties.init(from: self), forKey: BasicCodingKeys.additionalProperties)
         try? container.encode(self.backgroundColor.orClear, forKey: BasicCodingKeys.backgroundColor)
         try container.encode(self.frame.asCustomEncodable, forKey: BasicCodingKeys.frame)
-        try container.encode(self.className, forKey: .classForCoder)
         
-        debugPrint(self.className)
+        let finalClassName = self.className != UIView.className ? self.className : UIView.className
+        try container.encode(finalClassName, forKey: .classForCoder)
+        
+        debugPrint(finalClassName)
     }
 }
 
@@ -65,19 +67,17 @@ extension UIView: DecodableView  {
     
     public func decodeAndApplyBasicProperties(from decoder: Decoder) {
         
-        guard let basicInformation
-            = try? type(of: self).decodeBasicProperties(from: decoder) else {
-                return
+        guard let basicInformation = try? type(of: self).decodeBasicProperties(from: decoder) else {
+            return
         }
         
         self.backgroundColor = basicInformation.backgroundColor
         self.frame = basicInformation.rect
         
         let container = try? decoder.container(keyedBy: BasicCodingKeys.self)
-        let extraProperties = try? container?.decodeIfPresent(
-            AdditionalBasicProperties.self,
-            forKey: BasicCodingKeys.additionalProperties
-        )
+        
+        let extraProperties = try? container?
+            .decodeIfPresent(AdditionalBasicProperties.self, forKey: BasicCodingKeys.additionalProperties)
         
         extraProperties??.apply(to: self)
     }

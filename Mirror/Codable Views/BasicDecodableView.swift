@@ -9,8 +9,8 @@
 import UIKit
 
 @objc class BasicDecodableView: UIView, CodableView {
-    func encodeAdditionalProperties(into encoder: Encoder) throws {}
     
+    func encodeAdditionalProperties(into encoder: Encoder) throws {}
     
     static func new(from decoder: Decoder) -> Self {
         return (try? self.init(from: decoder)) ?? self.init(frame: .zero)
@@ -36,8 +36,15 @@ import UIKit
         let basicInfo = try type(of: self).decodeBasicProperties(from: decoder)
         
         self.init(frame: basicInfo.rect)
-        self.finalClassForInstantiation = basicInfo.coderClass
         self.backgroundColor = basicInfo.backgroundColor
+        
+        if basicInfo.coderClass != self.className {
+            self.finalClassForInstantiation = basicInfo.coderClass
+        } else {
+            self.finalClassForInstantiation = UIView.className
+        }
+        
+        (self as CodableView).decodeAndApplyBasicProperties(from: decoder)
         
         guard let classForInstantiation = self.finalClassForInstantiation else { return }
         guard let instantiationClass = NSClassFromString(classForInstantiation) else { return }

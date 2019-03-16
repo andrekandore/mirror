@@ -96,6 +96,14 @@ extension Optional {
     }
 }
 
+extension Optional where Wrapped: Equatable {
+    func `do`(comparingTo other: Wrapped?, isDifferent: (Wrapped) -> Void) {
+        if self != other, let unwrapped = self {
+            isDifferent(unwrapped)
+        }
+    }
+}
+
 extension Optional where Wrapped: UIColor {
     var orClear: UIColor {
         if let color = self {
@@ -103,4 +111,37 @@ extension Optional where Wrapped: UIColor {
         }
         return UIColor.clear
     }
+}
+
+protocol ComparisonKeyPathApplying {}
+
+extension ComparisonKeyPathApplying {
+    @discardableResult
+    mutating func applyKeyPath<T, Other>(_ keypath: WritableKeyPath<Self, T?>, from: Other, using otherKeyPath: WritableKeyPath<Other, T> , `if` comparitor: (T?,T?) -> Bool, elseSetTo elseValue: T? = nil) -> Bool  where T: Equatable {
+        let first = self[keyPath: keypath]
+        let second = from[keyPath: otherKeyPath]
+        if comparitor(first,second) {
+            self[keyPath: keypath] = second
+            return true
+        } else {
+            self[keyPath: keypath] = elseValue
+            return false
+        }
+    }
+    @discardableResult
+    mutating func applyKeyPath<T, Other, U>(_ keypath: WritableKeyPath<Self, T?>, from: Other, using otherKeyPath: WritableKeyPath<Other, U> , `if` comparitor: (T?,T?) -> Bool, transforming transform: (U) -> T, elseSetTo elseValue: T? = nil) -> Bool  where T: Equatable {
+        let first = self[keyPath: keypath]
+        let second = transform(from[keyPath: otherKeyPath])
+        if comparitor(first,(second)) {
+            self[keyPath: keypath] = second
+            return true
+        } else {
+            self[keyPath: keypath] = elseValue
+            return false
+        }
+    }
+}
+
+func |= (left: inout  Bool, right: Bool) {
+    left = left || right
 }
